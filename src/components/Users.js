@@ -9,7 +9,6 @@ const Users = () => {
   const users = useSelector(state => state.users);
   const [showAddForm, setShowAddForm] = useState(false);
   const bastionName = useOutletContext().name;
-  console.log(users)
   
   const handleCancel = () => {
     setShowAddForm(false);
@@ -17,7 +16,9 @@ const Users = () => {
 
   const handleDelete = (userId) => {
     return () => {
-      dispatch(deleteUser(bastionName, userId));
+      if (window.confirm('Are you sure you want to delete this user?')) {
+        dispatch(deleteUser(bastionName, userId));
+      }
     };
   };
 
@@ -47,7 +48,7 @@ const Users = () => {
           </thead>
           <tbody>
             {users.map(user => 
-              <tr>
+              <tr key={user.id}>
                <td>{user.username}</td>
                <td className='pl-4'>{user.email}</td>
                <td>

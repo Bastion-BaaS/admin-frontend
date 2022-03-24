@@ -11,7 +11,7 @@ const SidebarHome = ({ bastions }) => {
         <LinkHome />
         <div>
           {bastions.map(bastion =>
-            <SidebarBastionLink bastion={bastion} />
+            <SidebarBastionLink key={bastion.name} bastion={bastion} />
           )}
         </div>
       </div>

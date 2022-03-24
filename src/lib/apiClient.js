@@ -41,7 +41,7 @@ const getCollections = (bastionName, callback) => {
   //   .then(response => response.data)
   //   .then(callback)
   //   .catch(e => console.log(e))
-  callback([{id: 1, name: '1aadasddsdasdsa', data: {title: [{test: 'model1'}, 2, 3], name: 'test'}}, {id: 2, name: '2bb', data: {title: 'model2', blah: 'test2'}}])
+  callback([{id:45, documents: [{id: 1, name: '1aadasddsdasdsa', data: {title: [{test: 'model1'}, 2, 3], name: 'test'}}]}, {id:67, documents: [{id: 2, name: '2bb', data: {title: 'model2', blah: 'test2'}}]}])
 };
 
 const createCollection = (bastionName, callback) => {
@@ -87,6 +87,50 @@ const deleteUser = (bastionName, userId, callback) => {
   callback()
 };
 
+const getCloudCodeFunctions = (bastionName, callback) => {
+  // return axios
+  //   .get(`/ccf/${bastionName}`)
+  //   .then(response => response.data)
+  //   .then(callback)
+  //   .catch(e => console.log(e))
+  callback([{id:1, name: 'func1'}, {id:2, name: 'func2'}]);
+};
+
+const createCloudCodeFunction = (bastionName, funcName, funcData, callback) => {
+  // const header = { headers: { 'Content-Type: 'multipart/form-data } };
+  // return axios
+  //   .post(`/ccf/${bastionName}`, funcName, funcData, header)
+  //   .then(response => response.data)
+  //   .then(callback)
+  //   .catch(e => console.log(e))
+  callback({id:3, name: 'func3'})
+};
+
+const deleteCloudCodeFunction = (bastionName, funcId, callback) => {
+  // return axios
+  //   .delete(`/ccf/${bastionName}/${funcId}`)
+  //   .then(callback)
+  //   .catch(e => console.log(e))
+  callback()
+};
+
+const getFiles = (bastionName, callback) => {
+  // return axios
+  //   .get(`/files/${bastionName}`)
+  //   .then(response => response.data)
+  //   .then(callback)
+  //   .catch(e => console.log(e))
+  callback([{id: 1, name: '22@afterAll.com', username: 'username1234'},{id: 2, name: '22@aftesdasdsadasdsdrAll.com', username: 'user2'}]);
+};
+
+const deleteFile = (bastionName, fileId, callback) => {
+  // return axios
+  //   .delete(`/files/${bastionName}/${fileId}`)
+  //   .then(callback)
+  //   .catch(e => console.log(e))
+  callback()
+};
+
 const apiClient = {
   getBastions,
   getBastion,
@@ -98,5 +142,10 @@ const apiClient = {
   getUsers,
   createUser,
   deleteUser,
+  getCloudCodeFunctions,
+  createCloudCodeFunction,
+  deleteCloudCodeFunction,
+  getFiles,
+  deleteFile
 }
 export default apiClient;

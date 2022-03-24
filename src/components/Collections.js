@@ -16,14 +16,18 @@ const Collections = () => {
     dispatch(fetchCollections(bastionName));
   }, []);
 
+  console.log(collections)
+
   const handleCancel = () => {
     resetFields();
   };
 
   const handleDelete = (id) => {
     return () => {
-      dispatch(deleteCollection(bastionName, id));
-      if (id === active) { setActive(''); }
+      if (window.confirm('Are you sure you want to delete this collection?')) {
+        dispatch(deleteCollection(bastionName, id));
+        if (id === active) { setActive(''); }
+      }
     };
   };
 
@@ -78,10 +82,10 @@ const Collections = () => {
         <div className='flex-none pl-2 pr-6 overflow-x-auto'>
           <h2 className='hover:cursor-pointer' onClick={() => setActive('')}>Collections:</h2>
           {collections.map(collection =>
-            <div className='flex flex-row'>
-              <p className={collection.name === active ? activeClass : inactiveClass}
-                onClick={() => setActive(collection.name)}>
-                  {collection.name}
+            <div key={collection.id} className='flex flex-row'>
+              <p className={collection.id === active ? activeClass : inactiveClass}
+                onClick={() => setActive(collection.id)}>
+                  {collection.id}
               </p>
               <svg onClick={handleDelete(collection.id)}
                 className='my-2 hover:cursor-pointer hover:bg-red-500 ml-2 w-6 h-6'
@@ -92,7 +96,7 @@ const Collections = () => {
           )}
         </div>
         <div>
-          <CollectionSummary collection={collections.find(c => c.name === active)}/>
+          <CollectionSummary collection={collections.find(c => c.id === active)}/>
         </div>
       </div>
     </div>

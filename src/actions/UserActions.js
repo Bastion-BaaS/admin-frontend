@@ -26,7 +26,6 @@ export function createUser(bastionName, user) {
 };
 
 export function deleteUser(bastionName, userId) {
-  console.log(userId, bastionName)
   return function(dispatch) {
     apiClient.deleteUser(bastionName, userId, () => dispatch(deleteUserSuccess(userId)));
   };

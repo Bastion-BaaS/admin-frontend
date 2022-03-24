@@ -4,6 +4,8 @@ import BastionLayout from './components/BastionLayout';
 import BastionHome from './components/BastionHome';
 import Collections from './components/Collections';
 import Users from './components/Users';
+import CloudCode from './components/CloudCode';
+import Files from './components/Files';
 
 function App() {
   return (
@@ -13,7 +15,8 @@ function App() {
         <Route index element={<BastionHome />} />
         <Route path='collections' element={<Collections />} />
         <Route path='users' element={<Users />} />
-        {/* <Route path='functions' element={<BaasMain />} /> */}
+        <Route path='cloudcode' element={<CloudCode />} />
+        <Route path='files' element={<Files />} />
       </Route>
     </Routes>
   );

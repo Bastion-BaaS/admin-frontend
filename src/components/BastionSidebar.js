@@ -9,7 +9,8 @@ const BastionSidebar = ({ bastion }) => {
         <LinkHome />
         <SidebarItems title={'Collections'} bastionName={bastion.name} /> 
         <SidebarItems title={'Users'} bastionName={bastion.name} /> 
-        <SidebarItems title={'Functions'} bastionName={bastion.name} /> 
+        <SidebarItems title={'CloudCode'} bastionName={bastion.name} />
+        <SidebarItems title={'Files'} bastionName={bastion.name} /> 
       </div>
     </div>
   );
