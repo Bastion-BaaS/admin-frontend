@@ -11,7 +11,7 @@ const Home = () => {
   const bastions = useSelector(state => state.bastions);
   useEffect(() => {
     dispatch(fetchBastions());
-  }, [])
+  }, [dispatch])
 
   const handleCancel = () => {
     setShowCreateForm(false);
@@ -23,9 +23,9 @@ const Home = () => {
   };
 
   return (
-    <div className='App h-screen bg-blue-400 flex flex-row'>
+    <div className='App h-screen bg-white2 flex'>
       <SidebarHome bastions={bastions}/>
-      <div className='flex-1 overflow-auto'>
+      <div className='w-10/12 overflow-auto'>
         {showCreateForm 
         ?
           <div className='flex flex-col'>
