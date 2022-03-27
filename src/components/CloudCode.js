@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFunctions, deleteFunction, createFunction } from '../actions/CloudCodeActions';
-import axios from 'axios';
 
 const CloudCode = () => {
   const dispatch = useDispatch();
@@ -15,7 +14,7 @@ const CloudCode = () => {
 
   useEffect(() => {
     dispatch(fetchFunctions(bastionName));
-  }, []);
+  }, [dispatch, bastionName]);
 
   const handleCancel = () => {
     resetFields();
