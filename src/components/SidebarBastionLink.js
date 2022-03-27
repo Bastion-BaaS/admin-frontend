@@ -6,7 +6,7 @@ const SidebarBastionLink = ({ bastion }) => {
   return (
     <div className='w-full'>
       <Link
-        to={`/bastions/${bastion.StackName}`}
+        to={`/bastions/${bastion.StackName}/collections`}
         className='w-full flex flex-col px-4 py-2 h-12 rounded-md hover:bg-midnightblue2 text-white2 hover:text-tomato'
       >
         <div className='flex flex-row items-center'>

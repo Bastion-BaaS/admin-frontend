@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SidebarItems = ({ title, bastionName }) => {
+const SidebarItems = ({ active, setActive, title, bastionName }) => {
+  const linkCSS = active === title ? 'bg-midnightblue2' : 'hover:bg-midnightblue2'
 
   return (
     <div className='w-full px-2'>
       <Link
         to={`/bastions/${bastionName}/${title.toLowerCase()}`}
-        className='w-full flex flex-col px-4 py-2 h-12 rounded-md hover:bg-midnightblue2 text-white2 hover:text-tomato'
+        onClick={() => setActive(title)}
+        className={'w-full flex flex-col px-4 py-2 h-12 rounded-md text-white2 hover:text-tomato ' + linkCSS}
       >
         <div className='flex flex-row items-center'>
           <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

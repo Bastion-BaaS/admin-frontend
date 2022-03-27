@@ -26,4 +26,3 @@ const CollectionSummary = ({ collection }) => {
 };
 
 export default CollectionSummary;
-

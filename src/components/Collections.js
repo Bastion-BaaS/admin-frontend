@@ -10,13 +10,12 @@ const Collections = () => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [newCollectionTitle, setNewCollectionTitle] = useState('');
   const [active, setActive] = useState('');
-  const bastionName = useOutletContext().name;
+  const bastionName = useOutletContext().StackName;
+
 
   useEffect(() => {
     dispatch(fetchCollections(bastionName));
-  }, []);
-
-  console.log(collections)
+  }, [dispatch, bastionName]);
 
   const handleCancel = () => {
     resetFields();
@@ -82,12 +81,12 @@ const Collections = () => {
         <div className='flex-none pl-2 pr-6 overflow-x-auto'>
           <h2 className='hover:cursor-pointer' onClick={() => setActive('')}>Collections:</h2>
           {collections.map(collection =>
-            <div key={collection.id} className='flex flex-row'>
-              <p className={collection.id === active ? activeClass : inactiveClass}
-                onClick={() => setActive(collection.id)}>
-                  {collection.id}
+            <div key={collection} className='flex flex-row'>
+              <p className={collection === active ? activeClass : inactiveClass}
+                onClick={() => setActive(collection)}>
+                  {collection}
               </p>
-              <svg onClick={handleDelete(collection.id)}
+              <svg onClick={handleDelete(collection)}
                 className='my-2 hover:cursor-pointer hover:bg-red-500 ml-2 w-6 h-6'
                 fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12'></path>
@@ -96,7 +95,7 @@ const Collections = () => {
           )}
         </div>
         <div>
-          <CollectionSummary collection={collections.find(c => c.id === active)}/>
+          <CollectionSummary collection={collections.find(c => c === active)}/>
         </div>
       </div>
     </div>

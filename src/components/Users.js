@@ -8,7 +8,7 @@ const Users = () => {
   const dispatch = useDispatch();
   const users = useSelector(state => state.users);
   const [showAddForm, setShowAddForm] = useState(false);
-  const bastionName = useOutletContext().name;
+  const bastionName = useOutletContext().StackName;
   
   const handleCancel = () => {
     setShowAddForm(false);
@@ -24,7 +24,7 @@ const Users = () => {
 
   useEffect(() => {
     dispatch(fetchUsers(bastionName));
-  }, []);
+  }, [dispatch, bastionName]);
 
   return (
     <div className=''>

@@ -10,7 +10,8 @@ const CloudCode = () => {
 	const [ isFileSelected, setIsFileSelected ] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
   const [newFunctionTitle, setNewFunctionTitle] = useState('');
-  const bastionName = useOutletContext().name;
+  const bastionName = useOutletContext().StackName;
+  console.log(cloudCodeFunctions);
 
   useEffect(() => {
     dispatch(fetchFunctions(bastionName));
@@ -96,7 +97,7 @@ const CloudCode = () => {
             <h2>Cloud Code Functions:</h2>
             {cloudCodeFunctions.map(func =>
               <div key={func.id} className='flex flex-row py-2'>
-                <p>{func.name}</p>
+                <p>{func.functionName}</p>
                 <svg onClick={handleDelete(func.id)}
                   className='hover:cursor-pointer hover:bg-red-500 ml-2 w-6 h-6'
                   fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
