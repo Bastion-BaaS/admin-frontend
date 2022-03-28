@@ -40,6 +40,14 @@ const getCollections = (bastionName, callback) => {
     .catch(e => console.log(e))
 };
 
+const getCollection = (bastionName, collectionName, callback) => {
+  return axios
+    .get(`${baseUrl}/collections/${bastionName}/${collectionName}`)
+    .then(response => response.data)
+    .then(callback)
+    .catch(e => console.log(e))
+};
+
 const createCollection = (bastionName, callback) => {
   return axios
     .post(`${baseUrl}/collections/${bastionName}`)
@@ -48,9 +56,9 @@ const createCollection = (bastionName, callback) => {
     .catch(e => console.log(e))
 };
 
-const deleteCollection = (bastionName, collectionId, callback) => {
+const deleteCollection = (bastionName, collectionName, callback) => {
   return axios
-    .delete(`${baseUrl}/collections/${bastionName}/${collectionId}`)
+    .delete(`${baseUrl}/collections/${bastionName}/${collectionName}`)
     .then(callback)
     .catch(e => console.log(e))
 };
@@ -123,6 +131,7 @@ const apiClient = {
   createBastion,
   deleteBastion,
   getCollections,
+  getCollection,
   createCollection,
   deleteCollection,
   getUsers,

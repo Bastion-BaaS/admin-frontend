@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFiles, deleteFile } from '../actions/FileActions';
+import File from './File'
 
 const Users = () => {
   const dispatch = useDispatch();
   const files = useSelector(state => state.files);
-  const bastionName = useOutletContext().name;
+  const bastionName = useOutletContext().StackName;
   
   const handleDelete = (fileId) => {
     return () => {
@@ -18,30 +19,18 @@ const Users = () => {
 
   useEffect(() => {
     dispatch(fetchFiles(bastionName));
-  }, []);
+  }, [dispatch, bastionName]);
 
   return (
-    <div className='px-4'>
-      <table>
-        <thead>
-          <tr>
-            <td>Filename</td>
-            <td className='pl-4'></td>
-          </tr>
-        </thead>
-        <tbody>
-          {files.map(file => 
-            <tr key={file.id}>
-              <td>{file.name}</td>
-              <td>
-                <svg onClick={handleDelete(file.id)} className='hover:cursor-pointer hover:bg-red-400 m-2 w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12'></path>
-                </svg>
-              </td>
-            </tr> 
-          )}
-        </tbody>
-      </table>
+    <div className='max-w-screen-lg flex flex-col mb-2'>
+      <h1 className='flex-none text-lg text-black ml-2'>
+        Files
+      </h1>
+      <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
+        {files.map((file, i) =>
+          <File key={file.id} file={file} index={i} handleDelete={handleDelete}/>
+        )}
+      </div>
     </div>
   );
 };

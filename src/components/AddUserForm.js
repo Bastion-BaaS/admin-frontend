@@ -31,60 +31,41 @@ const AddUserForm = ({ onCancel, bastionName }) => {
 
   return (
     <div className='flex flex-col'>
-      <div className='px-4 mt-4'>
-        <table>
-          <tbody>
-            <tr>
-              <td><label htmlFor='username' className='inline-flex'>Username:</label></td>
-              <td>
-                <input
-                name='username'
-                className='border-black border-2 px-2 mx-2 inline-flex'
-                id='username'
-                type='text'
-                value={username}
-                placeholder='Username'
-                onChange={(e) => setUsername(e.target.value)}>
-                </input>
-              </td>
-            </tr>
-            <tr>
-              <td><label htmlFor='email' className='inline-flex'>Email:</label></td>
-              <td>
-                <input
-                name='email'
-                className='border-black border-2 px-2 mx-2 inline-flex'
-                id='newUserEmail'
-                type='email'
-                value={email}
-                placeholder='Email'
-                onChange={(e) => setEmail(e.target.value)}>
-                </input>
-              </td>
-            </tr>
-            <tr>
-              <td><label htmlFor='email'>Password:</label></td>
-              <td>
-                <input
-                name='password'
-                className='border-black border-2 px-2 mx-2'
-                id='newUserPassword'
-                type='text'
-                value={password}
-                placeholder='Password'
-                onChange={(e) => setPassword(e.target.value)}>
-                </input>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div className='flex flex-col pr-4 mt-4'>
+        <input
+          name='username'
+          className='border-bdazzledblue text-black border px-4 py-1 inline-flex rounded-xl mr-4 w-48 mb-2'
+          id='username'
+          type='text'
+          value={username}
+          placeholder='Username'
+          onChange={(e) => setUsername(e.target.value)}>
+        </input>
+        <input
+          name='email'
+          className='border-bdazzledblue text-black border px-4 py-1 inline-flex rounded-xl mr-4 w-48 mb-2'
+          id='newUserEmail'
+          type='email'
+          value={email}
+          placeholder='Email'
+          onChange={(e) => setEmail(e.target.value)}>
+        </input>
+        <input
+          name='password'
+          className='border-bdazzledblue text-black border px-4 py-1 inline-flex rounded-xl mr-4 w-48'
+          id='newUserPassword'
+          type='text'
+          value={password}
+          placeholder='Password'
+          onChange={(e) => setPassword(e.target.value)}>
+        </input>
       </div>
-      <div className='flex flex-row'>
-        <button className='border-black border-2 px-2 m-4 inline-flex rounded bg-orange-400'
+      <div className='flex flex-row text-white'>
+        <button className='border-bdazzledblue border px-4 my-2 py-1 inline-flex rounded-l-xl bg-bdazzledblue hover:bg-midnightblue hover:text-redorange'
           onClick={handleCreate}>
-          Create User
+          Create
         </button>
-        <button className='border-black border-2 px-2 m-4 inline-flex rounded bg-orange-400'
+        <button className='border-bdazzledblue border px-4 my-2 py-1 inline-flex rounded-r-xl bg-black hover:bg-gray-600'
           onClick={handleCancelAndResetForms}>
           Cancel
         </button>

@@ -8,14 +8,23 @@ function createCollectionSuccess(newCollection) {
   return { type: 'CREATE_COLLECTION_SUCCESS', newCollection };
 };
 
-function deleteCollectionSuccess(id) {
-  return { type: 'DELETE_COLLECTION_SUCCESS', id };
+function deleteCollectionSuccess(name) {
+  return { type: 'DELETE_COLLECTION_SUCCESS', name };
 };
 
+function fetchCollectionSuccess(collectionName, collection) {
+  return { type: 'FETCH_COLLECTION_SUCCESS', name: collectionName, collection };
+};
 
 export function fetchCollections(bastionName) {
   return function(dispatch) {
     apiClient.getCollections(bastionName, data => dispatch(fetchCollectionsSuccess(data)));
+  };
+};
+
+export function fetchCollection(bastionName, collectionName) {
+  return function(dispatch) {
+    apiClient.getCollection(bastionName, collectionName, data => dispatch(fetchCollectionSuccess(collectionName, data)));
   };
 };
 
@@ -25,8 +34,8 @@ export function createCollection(collection) {
   };
 };
 
-export function deleteCollection(bastionName, collectionId) {
+export function deleteCollection(bastionName, collectionName) {
   return function(dispatch) {
-    apiClient.deleteCollection(bastionName, collectionId, () => dispatch(deleteCollectionSuccess(collectionId)));
+    apiClient.deleteCollection(bastionName, collectionName, () => dispatch(deleteCollectionSuccess(collectionName)));
   };
 };
