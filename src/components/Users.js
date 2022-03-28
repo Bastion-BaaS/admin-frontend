@@ -3,6 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import AddUserForm from './AddUserForm';
 import { fetchUsers, deleteUser } from '../actions/UserActions';
+import User from './User';
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -27,40 +28,25 @@ const Users = () => {
   }, [dispatch, bastionName]);
 
   return (
-    <div className=''>
+    <div className='max-w-screen-lg flex flex-col mb-2'>
+      <h1 className='flex-none text-lg text-black ml-2'>
+        Users
+      </h1>
+      <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
+        {users.map((user, i) =>
+          <User key={user.id} index={i} user={user} handleDelete={handleDelete} />
+        )}
+      </div>
       {showAddForm ?
         <AddUserForm onCancel={handleCancel} bastionName={bastionName} />
       :
       <div className=''>
-        <button className='m-5 bg-green-300 rounded-md px-2'
+        <button className='mt-2 px-4 py-1 bg-bdazzledblue hover:bg-midnightblue hover:text-redorange text-md text-white2 rounded-xl'
           onClick={() => setShowAddForm(true)}>
-          Add User
+          Create
         </button>
-      </div>    
-      }
-      <div className='px-4'>
-        <table>
-          <thead>
-            <tr>
-              <td>Username</td>
-              <td className='pl-4'>Email</td>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map(user => 
-              <tr key={user.id}>
-               <td>{user.username}</td>
-               <td className='pl-4'>{user.email}</td>
-               <td>
-                 <svg onClick={handleDelete(user.id)} className='hover:cursor-pointer hover:bg-red-400 m-2 w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12'></path>
-                 </svg>
-               </td>
-             </tr> 
-            )}
-          </tbody>
-        </table>
       </div>
+      }
     </div>
   );
 };

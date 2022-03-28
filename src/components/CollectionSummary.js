@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactJson from 'react-json-view';
+import { useDispatch } from 'react-redux';
 
 const CollectionSummary = ({ collection }) => {
+  const dispatch = useDispatch();
+  // Maybe we can add a records state?
+  // const data = useSelector(state => state.records)
+
 
   const handleAddDocument = (obj) => {
     console.log('added', obj)

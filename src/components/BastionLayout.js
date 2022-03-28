@@ -19,7 +19,10 @@ const BastionLayout = () => {
       ?
         <div className='App h-screen bg-white2 flex'>
           <BastionSidebar bastion={bastion} />
-          <div className='w-10/12 overflow-auto'>
+          <div className='w-10/12 overflow-auto flex flex-col p-12'>
+            <h1 className='flex-none text-2xl font-semibold text-gray-900 mb-4'>
+              Your <span className='italic text-blueryb'>{name}</span> instance
+            </h1>
             <Outlet context={bastion}/>
           </div>
         </div>
