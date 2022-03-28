@@ -1,13 +1,8 @@
 import React from 'react';
 import ReactJson from 'react-json-view';
-import { useDispatch } from 'react-redux';
 
 const CollectionSummary = ({ collection }) => {
-  const dispatch = useDispatch();
-  // Maybe we can add a records state?
-  // const data = useSelector(state => state.records)
-
-
+  // to be implemented?
   const handleAddDocument = (obj) => {
     console.log('added', obj)
   }
@@ -18,14 +13,13 @@ const CollectionSummary = ({ collection }) => {
 
   return (
     <div>
-      {collection
-        ?
-        <div className='flex-1 px-4 mt-4 border-2 border-black p-2'>
-          <ReactJson src={collection} name={null} onAdd={handleAddDocument} onEdit={handleEditDocument} enableClipboard={false} />
+      {collection?.data &&
+        <div className='pt-8 mt-1 px-4'>
+          <div className='px-8 py-8 border-2 border-midnightblue bg-white rounded-xl'>
+            <ReactJson src={collection.data} name={null} onAdd={handleAddDocument} onEdit={handleEditDocument} enableClipboard={false} />
+          </div>
         </div>
-        :
-        <div className="border-black border-2 rounded px-2 bg-yellow-300">Choose a collection to view details</div>
-        }
+      }
     </div>
   );
 };
