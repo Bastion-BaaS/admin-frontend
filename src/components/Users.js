@@ -30,13 +30,15 @@ const Users = () => {
   return (
     <div className='max-w-screen-lg flex flex-col mb-2'>
       <h1 className='flex-none text-lg text-black ml-2'>
-        Users
+        {users.length > 0 ? 'Users' : 'You have no users'}
       </h1>
-      <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
-        {users.map((user, i) =>
-          <User key={user.id} index={i} user={user} handleDelete={handleDelete} />
-        )}
-      </div>
+      {users.length > 0 &&
+        <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
+          {users.map((user, i) =>
+            <User key={user.id} index={i} user={user} handleDelete={handleDelete} />
+          )}
+        </div>
+      }
       {showAddForm ?
         <AddUserForm onCancel={handleCancel} bastionName={bastionName} />
       :

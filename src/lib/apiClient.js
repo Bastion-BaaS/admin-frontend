@@ -94,10 +94,17 @@ const getCloudCodeFunctions = (bastionName, callback) => {
     .catch(e => console.log(e))
 };
 
-const createCloudCodeFunction = (bastionName, funcName, funcData, callback) => {
-  const header = { headers: { 'Content-Type': 'multipart/form-data' } };
-  return axios
-    .post(`${baseUrl}/ccf/${bastionName}`, funcName, funcData, header)
+const createCloudCodeFunction = (bastionName, func, callback) => {
+  const config = {
+    method: 'post',
+    data: func,
+    url: `${baseUrl}/ccf/${bastionName}`,
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  };
+
+  return axios(config)
     .then(response => response.data)
     .then(callback)
     .catch(e => console.log(e))

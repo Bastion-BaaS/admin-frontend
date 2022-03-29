@@ -19,9 +19,9 @@ export function fetchFunctions(bastionName) {
   };
 };
 
-export function createFunction(bastionName, funcName, funcData) {
+export function createFunction(bastionName, func) {
   return function(dispatch) {
-    apiClient.createCloudCodeFunction(bastionName, funcName, funcData, data => dispatch(createFunctionSuccess(data)));
+    apiClient.createCloudCodeFunction(bastionName, func, data => dispatch(createFunctionSuccess(data)));
   };
 };
 

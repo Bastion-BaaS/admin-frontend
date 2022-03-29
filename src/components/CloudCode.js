@@ -12,7 +12,7 @@ const CloudCode = () => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [newFunctionTitle, setNewFunctionTitle] = useState('');
   const bastionName = useOutletContext().StackName;
-  console.log(cloudCodeFunctions);
+
 
   useEffect(() => {
     dispatch(fetchFunctions(bastionName));
@@ -42,8 +42,9 @@ const CloudCode = () => {
       return;
     }
     const formData = new FormData();
-    formData.append('file', fileState)
-    dispatch(createFunction(newFunctionTitle, formData));
+    formData.append('file', fileState);
+    formData.append('fileName', newFunctionTitle);
+    dispatch(createFunction(bastionName, formData));
     resetFields();
   };
 
@@ -57,13 +58,15 @@ const CloudCode = () => {
     <div>
       <div className='max-w-screen-lg flex flex-col mb-2'>
         <h1 className='flex-none text-lg text-black ml-2'>
-          Cloud Code Functions
+          {cloudCodeFunctions.length > 0 ? 'Cloud Code Functions' : 'You have no cloud code cunctions'}
         </h1>
-        <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
-          {cloudCodeFunctions.map((func, i) =>
-            <CloudCodeCard key={func.id} index={i} func={func} handleDelete={handleDelete} />
-          )}
-        </div>
+        {cloudCodeFunctions.length > 0 &&
+          <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
+            {cloudCodeFunctions.map((func, i) =>
+              <CloudCodeCard key={func.id} index={i} func={func} handleDelete={handleDelete} />
+            )}
+          </div>
+        }
       </div>
       {showAddForm ?
           <div className='flex flex-col'>
