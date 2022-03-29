@@ -42,8 +42,8 @@ const CloudCode = () => {
       return;
     }
     const formData = new FormData();
-    formData.append('file', fileState)
-    formData.append('fileName', newFunctionTitle)
+    formData.append('file', fileState);
+    formData.append('fileName', newFunctionTitle);
     dispatch(createFunction(bastionName, formData));
     resetFields();
   };
