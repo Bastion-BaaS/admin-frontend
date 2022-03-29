@@ -24,13 +24,15 @@ const Users = () => {
   return (
     <div className='max-w-screen-lg flex flex-col mb-2'>
       <h1 className='flex-none text-lg text-black ml-2'>
-        Files
+        {files.length > 0 ? 'Files' : 'You have no files'}
       </h1>
-      <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
-        {files.map((file, i) =>
-          <File key={file.id} file={file} index={i} handleDelete={handleDelete}/>
-        )}
-      </div>
+      {files.length > 0 &&
+        <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
+          {files.map((file, i) =>
+            <File key={file.id} file={file} index={i} handleDelete={handleDelete}/>
+          )}
+        </div>
+      }
     </div>
   );
 };

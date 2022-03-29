@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import bastion_bw_logo from '../assets/images/bw_logo.svg';
 
 const DataCard = ({bastion, handleDelete}) => {
-  const maskedAPIKey = '*'.repeat(bastion.ApiKey.length - 4) + bastion.ApiKey.slice(-4);
+  const [showApiKey, setShowApiKey] = useState(false);
+
+  const toggleApiKey = () => {
+    setShowApiKey(!showApiKey);
+  }
+
+  const maskedAPIKey = showApiKey ? bastion.ApiKey : '*'.repeat(bastion.ApiKey.length - 4) + bastion.ApiKey.slice(-4);
   const instanceCreationDate = new Date(bastion.createdAt);
   return (
     <div className='h-24 flex flex-row items-center border border-bdazzledblue my-4 rounded-xl'>
@@ -12,7 +18,10 @@ const DataCard = ({bastion, handleDelete}) => {
         <p className='flex-auto text-black text-3xl'>{bastion.StackName}</p>
       </div>
       <div className='flex-none flex flex-col py-4 px-8 w-1/4'>
-        <p className='flex-none text-gray-800 text-sm'>API Key</p>
+        <div className='flex-none flex flex-row'>
+          <p className='flex-none text-gray-800 text-sm'>API Key</p>
+          <button className='bg-redorange text-white ml-2 rounded px-2 text-xs hover:cursor-pointer' onClick={toggleApiKey}>show</button>
+        </div>
         <p className='flex-auto text-black text-lg'>{maskedAPIKey}</p>
       </div>
       <div className='flex-none flex flex-col py-4 px-8 w-1/4'>

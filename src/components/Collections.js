@@ -50,13 +50,15 @@ const Collections = () => {
       <div className='flex flex-row'>
         <div className='flex-none w-1/3 flex flex-col mb-2'>
           <h1 className='flex-none text-lg text-black ml-2' onClick={() => setActive('')}>
-            Collections
+            {collections.length > 0 ? 'Collections' : 'You have no collections'}
           </h1>
-          <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2 bg-white'>
-            {collections.map((collection, i) =>
-              <Collection active={active === collection.name} key={collection.name} index={i} collection={collection} handleDelete={handleDelete} handleActive={handleActive}/>
-            )}
-          </div>
+          {collections.length > 0 &&
+            <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2 bg-white'>
+              {collections.map((collection, i) =>
+                <Collection active={active === collection.name} key={collection.name} index={i} collection={collection} handleDelete={handleDelete} handleActive={handleActive}/>
+              )}
+            </div>
+          }
           {showAddForm ?
             <div className='flex flex-col'>
               <div className='mt-2'>
