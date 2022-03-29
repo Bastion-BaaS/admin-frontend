@@ -12,7 +12,7 @@ const CloudCode = () => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [newFunctionTitle, setNewFunctionTitle] = useState('');
   const bastionName = useOutletContext().StackName;
-  console.log(cloudCodeFunctions);
+
 
   useEffect(() => {
     dispatch(fetchFunctions(bastionName));
@@ -43,7 +43,8 @@ const CloudCode = () => {
     }
     const formData = new FormData();
     formData.append('file', fileState)
-    dispatch(createFunction(newFunctionTitle, formData));
+    formData.append('fileName', newFunctionTitle)
+    dispatch(createFunction(bastionName, formData));
     resetFields();
   };
 
