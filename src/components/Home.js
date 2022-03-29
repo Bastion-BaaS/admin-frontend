@@ -25,9 +25,9 @@ const Home = () => {
     dispatch(createBastion({ name }));
   };
 
-  const handleDelete = (name, id) => {
+  const handleDelete = (name) => {
     try {
-      dispatch(deleteBastion(name, id));
+      dispatch(deleteBastion(name));
       navigate('/');
     } catch {
       console.log('Unable to delete instance.  Please try again later');

@@ -28,7 +28,7 @@ const DataCard = ({bastion, handleDelete}) => {
         <p className='flex-none text-gray-800 text-sm'>Started at</p>
         <p className='flex-auto text-gray-800 text-lg'>{instanceCreationDate.toLocaleString()}</p>
       </div>
-      <div className='flex-auto flex flex-col items-end py-4 pr-16 stroke-redorange' onClick={() => handleDelete(bastion.StackName, bastion.StackId)}>
+      <div className='flex-auto flex flex-col items-end py-4 pr-16 stroke-redorange' onClick={() => handleDelete(bastion.StackName)}>
         <svg xmlns="http://www.w3.org/2000/svg" className='hover:cursor-pointer' width="24" height="24" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="15" y1="9" x2="9" y2="15"></line>
