@@ -12,7 +12,7 @@ const CloudCode = () => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [newFunctionTitle, setNewFunctionTitle] = useState('');
   const bastionName = useOutletContext().StackName;
-
+  console.log(cloudCodeFunctions);
 
   useEffect(() => {
     dispatch(fetchFunctions(bastionName));
@@ -31,7 +31,6 @@ const CloudCode = () => {
   };
 
   const handleUploadFile = (e) => {
-    console.log('loaded')
     setFileState(e.target.files[0]);
     setIsFileSelected(true);
   }
@@ -39,6 +38,10 @@ const CloudCode = () => {
   const handleSubmit = () => {
     if (!isFileSelected) {
       alert('No file selected');
+      return;
+    } else if (newFunctionTitle.length < 1 || 
+        cloudCodeFunctions.some(ccf => ccf.name === newFunctionTitle)) {
+      alert('Function name is required and must be unique');
       return;
     }
     const formData = new FormData();
@@ -63,7 +66,7 @@ const CloudCode = () => {
         {cloudCodeFunctions.length > 0 &&
           <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
             {cloudCodeFunctions.map((func, i) =>
-              <CloudCodeCard key={func.id} index={i} func={func} handleDelete={handleDelete} />
+              <CloudCodeCard key={func.id} index={i} func={func} handleDelete={handleDelete(func.id)} />
             )}
           </div>
         }

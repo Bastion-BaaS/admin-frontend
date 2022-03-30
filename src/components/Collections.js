@@ -18,26 +18,31 @@ const Collections = () => {
     dispatch(fetchCollections(bastionName));
   }, [dispatch, bastionName]);
 
-  const handleCancel = () => {
-    resetFields();
-  };
-
-  const handleDelete = (id) => {
+  const handleDelete = (collection) => {
     return () => {
+      console.log('in handleDelete')
       if (window.confirm('Are you sure you want to delete this collection?')) {
-        dispatch(deleteCollection(bastionName, id));
-        if (id === active) { setActive(''); }
+        dispatch(deleteCollection(bastionName, collection.name));
+        if (collection.name === active) { setActive(''); }
       }
     };
   };
 
-  const handleActive = (name) => {
-    setActive(name);
-    dispatch(fetchCollection(bastionName, name));
+  const handleActive = (collection) => {
+    return () => {
+      console.log('in handleActive')
+      setActive(collection.name);
+      dispatch(fetchCollection(bastionName, collection.name));
+    }
   };
 
   const handleSave = () => {
-    dispatch(createCollection(newCollectionTitle));
+    if (newCollectionTitle.length === 0 || collections.some(col => col.name === newCollectionTitle)) {
+      alert('Name is required, and has to be unique');
+      return
+    }
+    dispatch(createCollection(bastionName, newCollectionTitle));
+    resetFields();
   };
 
   const resetFields = () => {
@@ -55,7 +60,8 @@ const Collections = () => {
           {collections.length > 0 &&
             <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2 bg-white'>
               {collections.map((collection, i) =>
-                <Collection active={active === collection.name} key={collection.name} index={i} collection={collection} handleDelete={handleDelete} handleActive={handleActive}/>
+                <Collection active={active === collection.name} key={collection.name} index={i}
+                  name={collection.name} handleDelete={handleDelete(collection)} handleActive={handleActive(collection)} />
               )}
             </div>
           }
@@ -78,7 +84,7 @@ const Collections = () => {
                   Save
                 </button>
                 <button className='border-bdazzledblue border px-4 my-4 py-1 inline-flex rounded-r-xl bg-black hover:bg-gray-600'
-                  onClick={handleCancel}>
+                  onClick={resetFields}>
                   Cancel
                 </button>
               </div>

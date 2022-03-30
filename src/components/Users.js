@@ -11,10 +11,10 @@ const Users = () => {
   const [showAddForm, setShowAddForm] = useState(false);
   const bastionName = useOutletContext().StackName;
   
-  const handleCancel = () => {
-    setShowAddForm(false);
+  const toggleAddForm = () => {
+    setShowAddForm(!showAddForm);
   };
-
+  
   const handleDelete = (userId) => {
     return () => {
       if (window.confirm('Are you sure you want to delete this user?')) {
@@ -35,16 +35,16 @@ const Users = () => {
       {users.length > 0 &&
         <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
           {users.map((user, i) =>
-            <User key={user.id} index={i} user={user} handleDelete={handleDelete} />
+            <User key={user.id} index={i} user={user} handleDelete={handleDelete(user.id)} />
           )}
         </div>
       }
       {showAddForm ?
-        <AddUserForm onCancel={handleCancel} bastionName={bastionName} />
+        <AddUserForm onCancelOrCreate={toggleAddForm} bastionName={bastionName} />
       :
       <div className=''>
         <button className='mt-2 px-4 py-1 bg-bdazzledblue hover:bg-midnightblue hover:text-redorange text-md text-white2 rounded-xl'
-          onClick={() => setShowAddForm(true)}>
+          onClick={toggleAddForm}>
           Create
         </button>
       </div>
