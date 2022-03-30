@@ -17,7 +17,7 @@ const DataCard = ({bastion, handleDelete}) => {
         <p className='flex-none text-gray-800 text-sm'>Name</p>
         <p className='flex-auto text-black text-3xl'>{bastion.StackName}</p>
       </div>
-      <div className='flex-none flex flex-col py-4 px-8 w-1/4'>
+      <div className='flex-none flex flex-col py-4 px-2 w-1/4'>
         <div className='flex-none flex flex-row'>
           <p className='flex-none text-gray-800 text-sm'>API Key</p>
           <button className='bg-redorange text-white ml-2 rounded px-2 text-xs hover:cursor-pointer' onClick={toggleApiKey}>show</button>
