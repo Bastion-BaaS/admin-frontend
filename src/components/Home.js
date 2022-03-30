@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import SidebarHome from './SidebarHome';
 import Overview from './Overview';
 import { fetchBastions, createBastion, deleteBastion } from '../actions/BastionActions';
@@ -10,27 +9,30 @@ const Home = () => {
   const [name, setName] = useState('');
   const dispatch = useDispatch();
   const bastions = useSelector(state => state.bastions);
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchBastions());
   }, [dispatch])
 
-  const handleCancel = () => {
+  const resetFilds = () => {
     setShowCreateForm(false);
     setName('');
   };
 
   const handleClickCreate = () => {
-    dispatch(createBastion({ name }));
+    try {
+      dispatch(createBastion({ name }));
+      resetFilds();
+    } catch {
+      console.log('Unable to create instance. Please try again later');
+    }
   };
 
   const handleDelete = (name) => {
     try {
       dispatch(deleteBastion(name));
-      navigate('/');
     } catch {
-      console.log('Unable to delete instance.  Please try again later');
+      console.log('Unable to delete instance. Please try again later');
     }
   };
 
@@ -48,7 +50,7 @@ const Home = () => {
                 Create
               </button>
               <button className='border-bdazzledblue border px-4 my-4 py-4 inline-flex bg-black hover:bg-gray-600'
-                onClick={handleCancel}>
+                onClick={resetFilds}>
                 Cancel
               </button>
               <div className='mt-4'>

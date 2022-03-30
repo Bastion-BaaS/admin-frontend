@@ -13,7 +13,6 @@ const CloudCode = () => {
   const [newFunctionTitle, setNewFunctionTitle] = useState('');
   const bastionName = useOutletContext().StackName;
 
-
   useEffect(() => {
     dispatch(fetchFunctions(bastionName));
   }, [dispatch, bastionName]);

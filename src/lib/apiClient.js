@@ -48,9 +48,9 @@ const getCollection = (bastionName, collectionName, callback) => {
     .catch(e => console.log(e))
 };
 
-const createCollection = (bastionName, callback) => {
+const createCollection = (bastionName, collectionName, callback) => {
   return axios
-    .post(`${baseUrl}/collections/${bastionName}`)
+    .post(`${baseUrl}/collections/${bastionName}`, {name: collectionName})
     .then(response => response.data)
     .then(callback)
     .catch(e => console.log(e))
@@ -99,9 +99,6 @@ const createCloudCodeFunction = (bastionName, func, callback) => {
     method: 'post',
     data: func,
     url: `${baseUrl}/ccf/${bastionName}`,
-    headers: {
-      'Content-Type': 'application/json',
-    }
   };
 
   return axios(config)

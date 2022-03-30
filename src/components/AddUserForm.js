@@ -2,28 +2,31 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createUser } from '../actions/UserActions';
 
-const AddUserForm = ({ onCancel, bastionName }) => {
+const AddUserForm = ({ onCancelOrCreate, bastionName }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  const handleCancelAndResetForms = () => {
-    onCancel();
-    resetForms();
-  };
-
   const handleCreate = () => {
     if ([username, email, password].some(value => value.length === 0)) {
       alert('All fields required');
       return;
+    } else if (username.length < 8) {
+      alert('Username must be at least 8 characters long');
+      return;
     }
     
-    dispatch(createUser(bastionName, { username, email, password }));
-    resetForms();
+    try {
+      dispatch(createUser(bastionName, { username, email, password }));
+      resetForms();
+    } catch(e) {
+      console.log(e);
+    }
   };
 
   const resetForms = () => {
+    onCancelOrCreate();
     setEmail('');
     setPassword('');
     setUsername('');
@@ -54,7 +57,7 @@ const AddUserForm = ({ onCancel, bastionName }) => {
           name='password'
           className='border-bdazzledblue text-black border px-4 py-1 inline-flex rounded-xl mr-4 w-48'
           id='newUserPassword'
-          type='text'
+          type='password'
           value={password}
           placeholder='Password'
           onChange={(e) => setPassword(e.target.value)}>
@@ -66,7 +69,7 @@ const AddUserForm = ({ onCancel, bastionName }) => {
           Create
         </button>
         <button className='border-bdazzledblue border px-4 my-2 py-1 inline-flex rounded-r-xl bg-black hover:bg-gray-600'
-          onClick={handleCancelAndResetForms}>
+          onClick={resetForms}>
           Cancel
         </button>
       </div>
