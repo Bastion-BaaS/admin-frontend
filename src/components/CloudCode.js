@@ -31,6 +31,11 @@ const CloudCode = () => {
   };
 
   const handleUploadFile = (e) => {
+    if (e.target.files[0].type !== 'application/zip') {
+      alert('Not a valid file type');
+      return;
+    }
+    
     setFileState(e.target.files[0]);
     setIsFileSelected(true);
   }

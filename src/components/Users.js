@@ -33,7 +33,7 @@ const Users = () => {
         {users.length > 0 ? 'Users' : 'You have no users'}
       </h1>
       {users.length > 0 &&
-        <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
+        <div className='flex flex-col max-w-screen-lg border rounded-xl border-gray-400 my-2 px-2'>
           {users.map((user, i) =>
             <User key={user.id} index={i} user={user} handleDelete={handleDelete(user.id)} />
           )}
