@@ -107,9 +107,9 @@ const createCloudCodeFunction = (bastionName, func, callback) => {
     .catch(e => console.log(e))
 };
 
-const deleteCloudCodeFunction = (bastionName, funcId, callback) => {
+const deleteCloudCodeFunction = (bastionName, funcName, callback) => {
   return axios
-    .delete(`${baseUrl}/ccf/${bastionName}/${funcId}`)
+    .delete(`${baseUrl}/ccf/${bastionName}/${funcName}`)
     .then(callback)
     .catch(e => console.log(e))
 };

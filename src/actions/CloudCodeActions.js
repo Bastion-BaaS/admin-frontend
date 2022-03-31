@@ -8,8 +8,8 @@ function createFunctionSuccess(newFunc) {
   return { type: 'CREATE_FUNCTION_SUCCESS', newFunc };
 };
 
-function deleteFunctionSuccess(id) {
-  return { type: 'DELETE_FUNCTION_SUCCESS', id };
+function deleteFunctionSuccess(name) {
+  return { type: 'DELETE_FUNCTION_SUCCESS', name };
 };
 
 
@@ -25,8 +25,8 @@ export function createFunction(bastionName, func) {
   };
 };
 
-export function deleteFunction(bastionName, funcId) {
+export function deleteFunction(bastionName, funcName) {
   return function(dispatch) {
-    apiClient.deleteCloudCodeFunction(bastionName, funcId, () => dispatch(deleteFunctionSuccess(funcId)));
+    apiClient.deleteCloudCodeFunction(bastionName, funcName, () => dispatch(deleteFunctionSuccess(funcName)));
   };
 };
