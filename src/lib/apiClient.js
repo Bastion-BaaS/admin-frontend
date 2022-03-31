@@ -1,13 +1,29 @@
 import axios from 'axios';
 const baseUrl = '/admin';
 
+const login = () => {
+  return axios
+    .post('/login')
+    .then(response => {
+      return response.status === 200
+    })
+};
+
+const logout = () => {
+  return axios
+    .post('/logout')
+    .then(response => {
+      return response.status === 200;
+    })
+};
+
 const getBastions = (callback) => {
   return axios
     .get(`${baseUrl}/instances`)
     .then(response => response.data)
     .then(callback)
     .catch(e => console.log(e))
-}
+};
 
 const getBastion = (bastionName, callback) => {
   return axios
@@ -15,7 +31,7 @@ const getBastion = (bastionName, callback) => {
     .then(response => response.data)
     .then(callback)
     .catch(e => console.log(e))
-}
+};
 
 const createBastion = (bastion, callback) => {
   return axios
@@ -130,6 +146,7 @@ const deleteFile = (bastionName, fileId, callback) => {
 };
 
 const apiClient = {
+  login,
   getBastions,
   getBastion,
   createBastion,
