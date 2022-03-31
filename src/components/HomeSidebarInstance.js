@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SidebarBastionLink = ({ bastion }) => {
+const SidebarInstanceLink = ({ bastion }) => {
 
   return (
     <div className='w-full'>
@@ -18,4 +18,4 @@ const SidebarBastionLink = ({ bastion }) => {
   );
 };
 
-export default SidebarBastionLink;
+export default SidebarInstanceLink;

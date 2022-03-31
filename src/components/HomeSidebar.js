@@ -1,20 +1,19 @@
 import React from 'react';
-
 import LinkHome from './LinkHome';
-import SidebarBastionLink from './SidebarBastionLink';
+import HomeSidebarInstance from './HomeSidebarInstance';
 
-const SidebarHome = ({ bastions }) => {
+const HomeSidebar = ({ bastions }) => {
 
   return (
     <div className='w-2/12 flex flex-col items-center bg-midnightblue py-12'>
       <LinkHome />
       <div className="w-full flex flex-col grow items-center px-2 pb-4">
         {bastions.map(bastion =>
-          <SidebarBastionLink key={bastion.StackName} bastion={bastion} />
+          <HomeSidebarInstance key={bastion.StackName} bastion={bastion} />
         )}
       </div>
     </div>
   );
 };
 
-export default SidebarHome;
+export default HomeSidebar;

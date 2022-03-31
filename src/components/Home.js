@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import SidebarHome from './SidebarHome';
+import SidebarHome from './HomeSidebar';
 import Overview from './Overview';
 import { fetchBastions, createBastion, deleteBastion } from '../actions/BastionActions';
 
 const Home = () => {
   const [showCreateForm, setShowCreateForm] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [name, setName] = useState('');
   const dispatch = useDispatch();
   const bastions = useSelector(state => state.bastions);
@@ -40,6 +41,13 @@ const Home = () => {
     <div className='App h-screen bg-white2 flex'>
       <SidebarHome bastions={bastions}/>
       <div className='w-10/12 overflow-auto flex flex-col p-12'>
+        <div className='flex justify-end'>
+        {loggedIn ?
+          <button onClick={() => setLoggedIn(false)}>Logout</button>
+        :
+          <button onClick={() => setLoggedIn(true)}>Login</button>
+        }
+        </div>
         <Overview bastions={bastions} handleDelete={handleDelete} />
         {showCreateForm
         ?

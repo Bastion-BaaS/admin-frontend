@@ -12,7 +12,6 @@ const Collections = () => {
   const [newCollectionTitle, setNewCollectionTitle] = useState('');
   const [active, setActive] = useState('');
   const bastionName = useOutletContext().StackName;
-  console.log(collections);
 
   useEffect(() => {
     dispatch(fetchCollections(bastionName));
