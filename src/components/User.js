@@ -6,15 +6,15 @@ const User = ({user, index, handleDelete}) => {
     <div
       className={'h-12 flex flex-row items-center' + (index === 0 ? '' : ' border-t border-gray-400')}
     >
-      <div className='flex-none flex flex-row items-center py-4 px-8 w-1/3'>
+      <div className='flex-none flex flex-row items-center py-4 px-8 w-1/4'>
         <p className='flex-none text-gray-600 text-md'>Name:</p>
         <p className='flex-auto text-bdazzledblue font-semibold text-md ml-2'>{user.username}</p>
       </div>
-      <div className='flex-none flex flex-row items-center py-4 px-8 w-1/2'>
+      <div className='flex-none flex flex-row items-center py-4 px-8 w-1/4'>
         <p className='flex-none text-gray-600 text-md'>Email:</p>
-        <p className='flex-auto text-bdazzledblue text-md font-light ml-2'>{user.email}</p>
+        <p className='flex-auto text-bdazzledblue text-md ml-2'>{user.email}</p>
       </div>
-      <div className='flex-none flex flex-row items-center py-4 px-8 w-1/2'>
+      <div className='flex-none flex flex-row items-center py-4 px-8 w-1/3'>
         <p className='flex-none text-gray-600 text-md'>Last update:</p>
         <p className='flex-auto text-bdazzledblue text-md font-light ml-2'>{instanceCreationDate.toLocaleString()}</p>
       </div>
