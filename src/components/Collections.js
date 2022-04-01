@@ -12,14 +12,14 @@ const Collections = () => {
   const [newCollectionTitle, setNewCollectionTitle] = useState('');
   const [active, setActive] = useState('');
   const bastionName = useOutletContext().StackName;
-  console.log(collections);
 
   useEffect(() => {
     dispatch(fetchCollections(bastionName));
   }, [dispatch, bastionName]);
 
   const handleDelete = (collection) => {
-    return () => {
+    return (e) => {
+      e.stopPropagation();
       console.log('in handleDelete')
       if (window.confirm('Are you sure you want to delete this collection?')) {
         dispatch(deleteCollection(bastionName, collection.name));

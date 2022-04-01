@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card';
+import BastionCard from './BastionCard';
 
 const Overview = ({bastions, handleDelete}) => {
   return (
@@ -11,7 +11,7 @@ const Overview = ({bastions, handleDelete}) => {
           <p className=''>You have {bastions.length !== 0 ? bastions.length : 'no'} instances deployed</p>
       </div>
       <div className='flex flex-col mt-6'>
-        {bastions.map(bastion => <Card key={bastion._id} bastion={bastion} handleDelete={handleDelete} />)
+        {bastions.map(bastion => <BastionCard key={bastion._id} bastion={bastion} handleDelete={handleDelete} />)
         }
       </div>
     </div>

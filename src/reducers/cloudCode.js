@@ -5,7 +5,7 @@ export default function cloudCode(state = [], action) {
     case 'CREATE_FUNCTION_SUCCESS':
       return [...state, action.newFunc];
     case 'DELETE_FUNCTION_SUCCESS':
-      return state.filter(state => state.id !== action.id)
+      return state.filter(func => func.functionName !== action.name)
     default:
       return state;
   };

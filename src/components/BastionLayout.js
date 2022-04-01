@@ -1,17 +1,25 @@
 import React, { useEffect } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import BastionSidebar from './BastionSidebar';
 import { fetchBastion } from '../actions/BastionActions';
+import { fetchAdmin } from '../actions/AdminActions';
 
 const BastionLayout = () => {
-  const name = useParams().name;
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const name = useParams().name;
   const bastion = useSelector(state => state.bastions).find(b => b.StackName === name);
+  const admin = useSelector(state => state.admin);
 
   useEffect(() => {
-    dispatch(fetchBastion(name));
-  }, [dispatch, name])
+    dispatch(fetchAdmin());
+    if (!admin) {
+      navigate('/');
+    } else {
+      dispatch(fetchBastion(name));
+    }
+  }, [dispatch, name, navigate, admin])
 
   return (
     <div>

@@ -12,8 +12,8 @@ const AddUserForm = ({ onCancelOrCreate, bastionName }) => {
     if ([username, email, password].some(value => value.length === 0)) {
       alert('All fields required');
       return;
-    } else if (username.length < 8) {
-      alert('Username must be at least 8 characters long');
+    } else if (username.length < 3) {
+      alert('Username must be at least 2 characters long');
       return;
     }
     

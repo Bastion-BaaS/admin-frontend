@@ -22,15 +22,21 @@ const CloudCode = () => {
     resetFields();
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (name) => {
     return () => {
       if (window.confirm('Are you sure you want to delete this function?')) {
-        dispatch(deleteFunction(bastionName, id));
+        dispatch(deleteFunction(bastionName, name));
       }
     };
   };
 
   const handleUploadFile = (e) => {
+    let filetype = e.target.files[0].type;
+    if (!['application/x-zip-compressed', 'application/zip'].includes(filetype)) {
+      alert('Not a valid file type');
+      return;
+    }
+
     setFileState(e.target.files[0]);
     setIsFileSelected(true);
   }
@@ -66,7 +72,7 @@ const CloudCode = () => {
         {cloudCodeFunctions.length > 0 &&
           <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>
             {cloudCodeFunctions.map((func, i) =>
-              <CloudCodeCard key={func.id} index={i} func={func} handleDelete={handleDelete(func.id)} />
+              <CloudCodeCard key={func.id} index={i} func={func} handleDelete={handleDelete(func.functionName)} />
             )}
           </div>
         }
