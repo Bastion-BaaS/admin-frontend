@@ -48,10 +48,11 @@ const Home = () => {
 
   const handleLogin = () => {
     dispatch(loginAdmin({username, password}));
-    // To be removed
-    if (!!admin) {
-      console.log(admin);
-    } else {
+    setTimeout(() => {
+      setUsername('');
+      setPassword('');
+    }, 1000);
+    if (!admin) {
       setError('Wrong credentials. Please try again.');
     }
     setTimeout(() => {
