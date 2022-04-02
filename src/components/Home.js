@@ -51,13 +51,13 @@ const Home = () => {
     setTimeout(() => {
       setUsername('');
       setPassword('');
-    }, 1000);
-    if (!admin) {
-      setError('Wrong credentials. Please try again.');
-    }
-    setTimeout(() => {
-      setError('');
-    }, 3000);
+      if (!admin) {
+        setError('Wrong credentials. Please try again.');
+      }
+      setTimeout(() => {
+        setError('');
+      }, 3000);
+    }, 2000);
   }
 
   return (
