@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SidebarItems = ({ active, title, bastionName }) => {
+const BastionSidebarLink = ({ active, title, bastionName }) => {
   const linkCSS = active === title ? 'bg-midnightblue2' : 'hover:bg-midnightblue2'
 
   return (
@@ -21,4 +21,4 @@ const SidebarItems = ({ active, title, bastionName }) => {
   );
 };
 
-export default SidebarItems;
+export default BastionSidebarLink;

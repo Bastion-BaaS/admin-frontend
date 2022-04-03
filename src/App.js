@@ -1,4 +1,8 @@
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAdmin } from './actions/AdminActions';
+import Login from './components/Login';
 import Home from './components/Home';
 import BastionLayout from './components/BastionLayout';
 import Collections from './components/Collections';
@@ -7,6 +11,22 @@ import CloudCode from './components/CloudCode';
 import Files from './components/Files';
 
 function App() {
+  const dispatch = useDispatch();
+  const admin = useSelector(state => state.admin);
+  console.log(admin)
+
+  useEffect(() => {
+    if (!admin) {
+      dispatch(fetchAdmin());
+    }
+  }, [dispatch, admin])
+
+  if (!admin) {
+    return (
+      <Login />
+    );
+  }
+
   return (
     <Routes>
       <Route path='/' element={<Home />} />

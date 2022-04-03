@@ -5,7 +5,7 @@ import HomeSidebarInstance from './HomeSidebarInstance';
 import BastionSidebarLogout from './BastionSidebarLogout';
 import { fetchAdmin } from '../actions/AdminActions';
 
-const HomeSidebar = ({ bastions }) => {
+const HomeSidebar = ({ bastions=[], logout=false }) => {
   const dispatch = useDispatch();
   const admin = useSelector(state => state.admin);
 
@@ -24,7 +24,9 @@ const HomeSidebar = ({ bastions }) => {
               )}
           </div>
         }
-        <BastionSidebarLogout />
+        {logout &&
+          <BastionSidebarLogout />
+        }
       </div>
     </div>
   );
