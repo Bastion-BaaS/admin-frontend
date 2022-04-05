@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import LinkHome from './LinkHome';
 import BastionSidebarLink from './BastionSidebarLink';
-import BastionSidebarLogout from './BastionSidebarLogout';
+import SidebarLogout from './SidebarLogout';
 
 const BastionSidebar = ({ bastion }) => {
   const pathname = useLocation().pathname;
@@ -25,7 +25,7 @@ const BastionSidebar = ({ bastion }) => {
       <BastionSidebarLink active={currentTab} title={'Users'} bastionName={bastion.StackName} />
       <BastionSidebarLink active={currentTab} title={'CloudCode'} bastionName={bastion.StackName} />
       <BastionSidebarLink active={currentTab} title={'Files'} bastionName={bastion.StackName} />
-      <BastionSidebarLogout />
+      <SidebarLogout />
     </div>
   );
 };

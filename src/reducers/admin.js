@@ -1,12 +1,8 @@
-export default function admin(state = false, action) {
+export default function admin(state = true, action) {
   switch (action.type) {
     case 'LOGIN_SUCCESS': 
       return true;
-    case 'LOGIN_FAILURE':
-      return false;
-    case 'FETCH_SUCCESS':
-      return true;
-    case 'FETCH_FAILURE':
+    case 'AUTH_ERROR':
       return false;
     case 'LOGOUT_SUCCESS':
       return false;

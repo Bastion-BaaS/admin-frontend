@@ -15,8 +15,7 @@ const BastionLayout = () => {
 
   return (
     <div>
-      {bastion
-      ?
+      {bastion ?
         <div className='App h-screen bg-white2 flex'>
           <BastionSidebar bastion={bastion} />
           <div className='w-10/12 overflow-auto flex flex-col p-12'>

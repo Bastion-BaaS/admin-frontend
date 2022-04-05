@@ -14,7 +14,7 @@ const Home = () => {
     dispatch(fetchBastions());
   }, [dispatch])
 
-  const resetFilds = () => {
+  const resetFields = () => {
     setShowCreateForm(false);
     setName('');
   };
@@ -22,7 +22,7 @@ const Home = () => {
   const handleClickCreate = () => {
     try {
       dispatch(createBastion({ name }));
-      resetFilds();
+      resetFields();
     } catch {
       console.log('Unable to create instance. Please try again later');
     }
@@ -57,7 +57,7 @@ const Home = () => {
                   Create
                 </button>
                 <button className='border-bdazzledblue border px-4 my-4 py-4 inline-flex bg-black hover:bg-gray-600'
-                  onClick={resetFilds}>
+                  onClick={resetFields}>
                   Cancel
                 </button>
                 <div className='mt-4'>

@@ -3,7 +3,7 @@ import { useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logoutAdmin } from '../actions/AdminActions';
 
-const SidebarBastionLogout = () => {
+const SidebarLogout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -28,4 +28,4 @@ const SidebarBastionLogout = () => {
   );
 };
 
-export default SidebarBastionLogout;
+export default SidebarLogout;

@@ -1,100 +1,100 @@
 import axios from 'axios';
 const baseUrl = '/admin';
 
-const getBastions = (callback) => {
+const getBastions = (success, err) => {
   return axios
     .get(`${baseUrl}/instances`)
     .then(response => response.data)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const getBastion = (bastionName, callback) => {
+const getBastion = (bastionName, success, err) => {
   return axios
     .get(`${baseUrl}/instances/${bastionName}`)
     .then(response => response.data)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const createBastion = (bastion, callback) => {
+const createBastion = (bastion, success, err) => {
   return axios
     .post(`${baseUrl}/instances`, bastion)
     .then(response => response.data)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const deleteBastion = (bastionName, callback) => {
+const deleteBastion = (bastionName, success, err) => {
   return axios
     .delete(`${baseUrl}/instances/${bastionName}`)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const getCollections = (bastionName, callback) => {
+const getCollections = (bastionName, success, err) => {
   return axios
     .get(`${baseUrl}/collections/${bastionName}`)
     .then(response => response.data)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const getCollection = (bastionName, collectionName, callback) => {
+const getCollection = (bastionName, collectionName, success, err) => {
   return axios
     .get(`${baseUrl}/collections/${bastionName}/${collectionName}`)
     .then(response => response.data)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const createCollection = (bastionName, collectionName, callback) => {
+const createCollection = (bastionName, collectionName, success, err) => {
   return axios
     .post(`${baseUrl}/collections/${bastionName}`, {name: collectionName})
     .then(response => response.data)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const deleteCollection = (bastionName, collectionName, callback) => {
+const deleteCollection = (bastionName, collectionName, success, err) => {
   return axios
     .delete(`${baseUrl}/collections/${bastionName}/${collectionName}`)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const getUsers = (bastionName, callback) => {
+const getUsers = (bastionName, success, err) => {
   return axios
     .get(`${baseUrl}/users/${bastionName}`)
     .then(response => response.data)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const createUser = (bastionName, user, callback) => {
+const createUser = (bastionName, user, success, err) => {
   return axios
     .post(`${baseUrl}/users/${bastionName}`, user)
     .then(response => response.data)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const deleteUser = (bastionName, userId, callback) => {
+const deleteUser = (bastionName, userId, success, err) => {
   return axios
     .delete(`${baseUrl}/users/${bastionName}/${userId}`)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const getCloudCodeFunctions = (bastionName, callback) => {
+const getCloudCodeFunctions = (bastionName, success, err) => {
   return axios
     .get(`${baseUrl}/ccf/${bastionName}`)
     .then(response => response.data)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const createCloudCodeFunction = (bastionName, func, callback) => {
+const createCloudCodeFunction = (bastionName, func, success, err) => {
   const config = {
     method: 'post',
     data: func,
@@ -103,30 +103,30 @@ const createCloudCodeFunction = (bastionName, func, callback) => {
 
   return axios(config)
     .then(response => response.data)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const deleteCloudCodeFunction = (bastionName, funcName, callback) => {
+const deleteCloudCodeFunction = (bastionName, funcName, success, err) => {
   return axios
     .delete(`${baseUrl}/ccf/${bastionName}/${funcName}`)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const getFiles = (bastionName, callback) => {
+const getFiles = (bastionName, success, err) => {
   return axios
     .get(`${baseUrl}/files/${bastionName}`)
     .then(response => response.data)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
-const deleteFile = (bastionName, fileId, callback) => {
+const deleteFile = (bastionName, fileId, success, err) => {
   return axios
     .delete(`${baseUrl}/files/${bastionName}/${fileId}`)
-    .then(callback)
-    .catch(e => console.log(e))
+    .then(success)
+    .catch(err)
 };
 
 const apiClient = {

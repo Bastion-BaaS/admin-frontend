@@ -11,9 +11,9 @@ const LinkHome = () => {
         </div>
       </Link>
       <div className='px-2 w-full'>
-        <Link to={'/'}
-              className='w-full flex flex-col px-4 py-2 h-12 rounded-md hover:bg-midnightblue2 text-white2 hover:text-tomato'
-        >
+        <Link
+          to='/'
+          className='w-full flex flex-col px-4 py-2 h-12 rounded-md hover:bg-midnightblue2 text-white2 hover:text-tomato'>
           <div className='flex flex-row items-center'>
             <svg
               className="mr-3 h-6 w-6 "

@@ -12,7 +12,6 @@ const CloudCode = () => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [newFunctionTitle, setNewFunctionTitle] = useState('');
   const bastionName = useOutletContext().StackName;
-  console.log(cloudCodeFunctions);
 
   useEffect(() => {
     dispatch(fetchFunctions(bastionName));
@@ -34,6 +33,7 @@ const CloudCode = () => {
     let filetype = e.target.files[0].type;
     if (!['application/x-zip-compressed', 'application/zip'].includes(filetype)) {
       alert('Not a valid file type');
+      resetFields();
       return;
     }
 
