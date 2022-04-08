@@ -15,7 +15,7 @@ const File = ({file, index, handleDelete}) => {
         <p className='flex-none text-gray-600 text-md'>Last update:</p>
         <p className='flex-auto text-bdazzledblue text-md font-light ml-2'>{instanceCreationDate.toLocaleString()}</p>
       </div>
-      <div className='flex-auto flex flex-col items-end py-4 pr-4 stroke-redorange' onClick={() => handleDelete(file.id)}>
+      <div id='deleteFile' className='flex-auto flex flex-col items-end py-4 pr-4 stroke-redorange' onClick={() => handleDelete(file.id)}>
         <svg xmlns="http://www.w3.org/2000/svg" className='hover:cursor-pointer' width="20" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="15" y1="9" x2="9" y2="15"></line>
@@ -23,7 +23,7 @@ const File = ({file, index, handleDelete}) => {
         </svg>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default File;

@@ -30,7 +30,6 @@ const Collections = () => {
 
   const handleActive = (collection) => {
     return () => {
-      console.log('in handleActive')
       setActive(collection.name);
       dispatch(fetchCollection(bastionName, collection.name));
     }
@@ -79,7 +78,7 @@ const Collections = () => {
                 </input>
               </div>
               <div className='flex flex-row text-white'>
-                <button className='border-bdazzledblue border px-4 my-4 py-1 inline-flex rounded-l-xl bg-bdazzledblue hover:bg-midnightblue hover:text-redorange'
+                <button id='saveCollection' className='border-bdazzledblue border px-4 my-4 py-1 inline-flex rounded-l-xl bg-bdazzledblue hover:bg-midnightblue hover:text-redorange'
                   onClick={handleSave}>
                   Save
                 </button>

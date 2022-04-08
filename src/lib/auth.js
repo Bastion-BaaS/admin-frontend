@@ -1,36 +1,23 @@
 import axios from 'axios';
 const baseUrl = '/admin';
 
-const login = (admin, successCallback, failureCallback) => {
+const login = (admin, success, err) => {
   return axios
     .post(`${baseUrl}/login`, admin)
-    .then(response => {
-      console.log(response)
-      return response.status
-    })
-    .then(successCallback)
-    .catch(failureCallback)
+    .then(success)
+    .catch(err)
 };
 
-const logout = (callback) => {
+const logout = (success, err) => {
   return axios
     .post(`${baseUrl}/logout`)
-    .then(callback)
-    .catch(callback)
+    .then(success)
+    .catch(err)
 };
-
-const check = (successCallback, failureCallback) => {
-  return axios
-    .post(`${baseUrl}/check`, { withCredentials: true })
-    .then(successCallback)
-    .catch(failureCallback)
-};
-
 
 const auth = {
   login,
-  logout,
-  check
+  logout
 }
 
 export default auth;

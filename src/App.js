@@ -1,4 +1,7 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Login from './components/Login';
 import Home from './components/Home';
 import BastionLayout from './components/BastionLayout';
 import Collections from './components/Collections';
@@ -7,6 +10,14 @@ import CloudCode from './components/CloudCode';
 import Files from './components/Files';
 
 function App() {
+  const admin = useSelector(state => state.admin);
+
+  if (!admin) {
+    return (
+      <Login />
+    );
+  }
+
   return (
     <Routes>
       <Route path='/' element={<Home />} />

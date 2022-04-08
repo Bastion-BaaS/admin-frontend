@@ -1,30 +1,21 @@
 import React, { useEffect } from 'react';
-import { Outlet, useParams, useNavigate } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import BastionSidebar from './BastionSidebar';
 import { fetchBastion } from '../actions/BastionActions';
-import { fetchAdmin } from '../actions/AdminActions';
 
 const BastionLayout = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const name = useParams().name;
   const bastion = useSelector(state => state.bastions).find(b => b.StackName === name);
-  const admin = useSelector(state => state.admin);
 
   useEffect(() => {
-    dispatch(fetchAdmin());
-    if (!admin) {
-      navigate('/');
-    } else {
-      dispatch(fetchBastion(name));
-    }
-  }, [dispatch, name, navigate, admin])
+    dispatch(fetchBastion(name));
+  }, [dispatch, name])
 
   return (
     <div>
-      {bastion
-      ?
+      {bastion ?
         <div className='App h-screen bg-white2 flex'>
           <BastionSidebar bastion={bastion} />
           <div className='w-10/12 overflow-auto flex flex-col p-12'>

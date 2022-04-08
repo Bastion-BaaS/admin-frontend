@@ -1,7 +1,6 @@
 export default function collections(state = [], action) {
   switch (action.type) {
     case 'FETCH_COLLECTIONS_SUCCESS':
-      console.log('in reducer:', action) 
       return action.collections.map(collectionName => {
         return {name: collectionName};
       });
