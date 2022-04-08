@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFiles, deleteFile } from '../actions/FileActions';
-import File from './File'
+import File from './File';
 
 const Files = () => {
   const dispatch = useDispatch();

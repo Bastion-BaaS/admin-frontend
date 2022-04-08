@@ -52,7 +52,7 @@ const Home = () => {
           {showCreateForm ?
             <div className='flex flex-col items-center max-w-screen-lg'>
               <div className='flex flex-row text-white text-xl'>
-                <button className='border-bdazzledblue border px-4 my-4 py-4 inline-flex rounded-l-xl bg-bdazzledblue hover:bg-midnightblue hover:text-redorange'
+                <button id='createBastion' className='border-bdazzledblue border px-4 my-4 py-4 inline-flex rounded-l-xl bg-bdazzledblue hover:bg-midnightblue hover:text-redorange'
                   onClick={handleClickCreate}>
                   Create
                 </button>

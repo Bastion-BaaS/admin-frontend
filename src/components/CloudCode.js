@@ -67,7 +67,7 @@ const CloudCode = () => {
     <div>
       <div className='max-w-screen-lg flex flex-col mb-2'>
         <h1 className='flex-none text-lg text-black ml-2'>
-          {cloudCodeFunctions.length > 0 ? 'Cloud Code Functions' : 'You have no cloud code cunctions'}
+          {cloudCodeFunctions.length > 0 ? 'Cloud Code Functions' : 'You have no cloud code functions'}
         </h1>
         {cloudCodeFunctions.length > 0 &&
           <div className='flex flex-col max-w-screen-md border rounded-xl border-gray-400 my-2 px-2'>

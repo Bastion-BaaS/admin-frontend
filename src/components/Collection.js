@@ -3,6 +3,7 @@ import React from 'react';
 const Collection = ({active, name, index, handleDelete, handleActive}) => {
   return (
     <div
+      id='collectionTab'
       className={'h-12 flex flex-row items-center hover:cursor-pointer' + (index === 0 ? '' : ' border-t border-gray-400')}
       onClick={handleActive}
     >

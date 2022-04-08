@@ -15,6 +15,7 @@ const SidebarLogout = () => {
   return (
     <div className='flex flex-col-reverse h-full w-full pb-2'>
         <div
+          id='logoutDiv'
           onClick={handleLogout}
           className='w-full flex flex-col px-4 py-2 h-12 rounded-md hover:bg-midnightblue2 text-white2 hover:text-tomato hover:cursor-pointer'>
           <div className='flex flex-row items-center'>
