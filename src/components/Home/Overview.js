@@ -1,5 +1,5 @@
 import React from 'react';
-import BastionCard from './BastionCard';
+import BastionCard from '../Instances/BastionCard';
 
 const Overview = ({bastions, handleDelete}) => {
   return (

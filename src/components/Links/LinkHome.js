@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import bastion_dark from '../assets/images/bastion_logo_dark.png'
+import bastion_dark from '../../assets/images/bastion_logo_dark.png'
 
 const LinkHome = () => {
   return (

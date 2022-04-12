@@ -7,7 +7,6 @@ export default function bastions(state = [], action) {
     case 'CREATE_BASTION_SUCCESS':
       return [...state, action.newBastion];
     case 'DELETE_BASTION_SUCCESS':
-      console.log('in bastion reducer:', action, state)
       return state.filter(bastion => bastion.StackName !== action.bastionName);
     default:
       return state;

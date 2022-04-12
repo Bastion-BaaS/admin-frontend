@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createUser } from '../actions/UserActions';
+import { createUser } from '../../actions/UserActions';
 
 const AddUserForm = ({ onCancelOrCreate, bastionName }) => {
   const [username, setUsername] = useState('');

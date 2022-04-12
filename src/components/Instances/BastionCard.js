@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import bastion_bw_logo from '../assets/images/bw_logo.svg';
+import bastion_bw_logo from '../../assets/images/bw_logo.svg';
 
 const DataCard = ({bastion, handleDelete}) => {
   const [showApiKey, setShowApiKey] = useState(false);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import AddUserForm from './AddUserForm';
-import { fetchUsers, deleteUser } from '../actions/UserActions';
+import { fetchUsers, deleteUser } from '../../actions/UserActions';
 import User from './User';
 
 const Users = () => {

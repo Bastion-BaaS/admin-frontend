@@ -1,7 +1,7 @@
 import React from 'react';
-import LinkHome from './LinkHome';
+import LinkHome from '../Links/LinkHome';
 import HomeSidebarInstance from './HomeSidebarInstance';
-import SidebarLogout from './SidebarLogout';
+import SidebarLogout from '../Links/SidebarLogout';
 
 const HomeSidebar = ({ bastions=[], logout=false }) => {
   return (

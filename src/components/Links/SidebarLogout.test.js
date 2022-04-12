@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import SidebarLogout from './SidebarLogout';
-import { logoutAdmin } from '../actions/AdminActions';
+import { logoutAdmin } from '../../actions/AdminActions';
 
-jest.mock('../actions/AdminActions', () => {
+jest.mock('../../actions/AdminActions', () => {
   return {
     logoutAdmin: jest.fn(() => ({ type: 'none' })),
   };

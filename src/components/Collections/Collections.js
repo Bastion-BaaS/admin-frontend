@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCollections, fetchCollection, deleteCollection, createCollection } from '../actions/CollectionActions';
+import { fetchCollections, fetchCollection, deleteCollection, createCollection } from '../../actions/CollectionActions';
 import CollectionSummary from './CollectionSummary';
 import Collection from './Collection';
 
@@ -20,7 +20,6 @@ const Collections = () => {
   const handleDelete = (collection) => {
     return (e) => {
       e.stopPropagation();
-      console.log('in handleDelete')
       if (window.confirm('Are you sure you want to delete this collection?')) {
         dispatch(deleteCollection(bastionName, collection.name));
         if (collection.name === active) { setActive(''); }

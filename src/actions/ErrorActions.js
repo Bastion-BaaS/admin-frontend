@@ -3,9 +3,9 @@ export function handleAPIError(e) {
     return { type: 'AUTH_ERROR' };
   } else if (e.response.status === 404) {
     console.log('Resource not found');
-    return {};
+    return {type: '404'};
   } else {
     console.log(e.response.status, e.response.data?.message);
-    return {};
+    return {type: 'OTHER'};
   }
 }

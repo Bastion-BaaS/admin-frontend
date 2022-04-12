@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import BastionSidebar from './BastionSidebar';
-import { fetchBastion } from '../actions/BastionActions';
+import { fetchBastion } from '../../actions/BastionActions';
 
 const BastionLayout = () => {
   const dispatch = useDispatch();
