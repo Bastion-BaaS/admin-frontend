@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchFunctions, deleteFunction, createFunction } from '../actions/CloudCodeActions';
+import { fetchFunctions, deleteFunction, createFunction } from '../../actions/CloudCodeActions';
 import CloudCodeCard from './CloudCodeCard';
 
 const CloudCode = () => {

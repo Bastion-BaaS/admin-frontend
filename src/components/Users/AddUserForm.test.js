@@ -3,10 +3,10 @@ import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import AddUserForm from './AddUserForm';
-import { createUser } from '../actions/UserActions';
+import { createUser } from '../../actions/UserActions';
 
 window.alert = jest.fn();
-jest.mock('../actions/UserActions', () => {
+jest.mock('../../actions/UserActions', () => {
   return {
     createUser: jest.fn(() => ({ type: 'none' })),
   };

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import LinkHome from './LinkHome';
-import BastionSidebarLink from './BastionSidebarLink';
-import SidebarLogout from './SidebarLogout';
+import LinkHome from '../Links/LinkHome';
+import BastionSidebarLink from '../Links/BastionSidebarLink';
+import SidebarLogout from '../Links/SidebarLogout';
 
 const BastionSidebar = ({ bastion }) => {
   const pathname = useLocation().pathname;

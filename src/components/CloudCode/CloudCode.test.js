@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import CloudCode from './CloudCode';
-import { fetchFunctions } from '../actions/CloudCodeActions';
+import { fetchFunctions } from '../../actions/CloudCodeActions';
 
 window.alert = jest.fn();
 
@@ -14,7 +14,7 @@ jest.mock('react-router-dom', () => {
     useOutletContext: () => ({StackName: 'testname' }),
   }
 })
-jest.mock('../actions/CloudCodeActions', () => {
+jest.mock('../../actions/CloudCodeActions', () => {
   return {
     fetchFunctions: jest.fn(() => ({ type: 'none' })),
     deleteFunction: jest.fn(() => ({ type: 'none' })),

@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import Login from './Login';
-import { loginAdmin } from '../actions/AdminActions';
+import { loginAdmin } from '../../actions/AdminActions';
 
-jest.mock('../actions/AdminActions', () => {
+jest.mock('../../actions/AdminActions', () => {
   return {
     loginAdmin: jest.fn(() => ({ type: 'none' })),
   };

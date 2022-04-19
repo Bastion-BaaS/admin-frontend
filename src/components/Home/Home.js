@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HomeSidebar from './HomeSidebar';
 import Overview from './Overview';
-import { fetchBastions, createBastion, deleteBastion } from '../actions/BastionActions';
+import { fetchBastions, createBastion, deleteBastion } from '../../actions/BastionActions';
 
 const Home = () => {
   const [showCreateForm, setShowCreateForm] = useState(false);

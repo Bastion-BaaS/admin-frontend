@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HomeSidebar from './HomeSidebar';
-import { loginAdmin } from '../actions/AdminActions';
+import { loginAdmin } from '../../actions/AdminActions';
 
 const Login = () => {
   const dispatch = useDispatch();

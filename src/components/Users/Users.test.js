@@ -1,9 +1,9 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Users from './Users';
-import { fetchUsers } from '../actions/UserActions';
+import { fetchUsers } from '../../actions/UserActions';
 
 jest.mock('react-router-dom', () => {
   const ActualReactRouter = jest.requireActual('react-router-dom')
@@ -12,7 +12,7 @@ jest.mock('react-router-dom', () => {
     useOutletContext: () => ({StackName: 'testname' }),
   }
 })
-jest.mock('../actions/UserActions', () => {
+jest.mock('../../actions/UserActions', () => {
   return {
     fetchUsers: jest.fn(() => ({ type: 'none' })),
   };

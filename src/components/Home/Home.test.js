@@ -4,9 +4,9 @@ import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Home from './Home';
-import { fetchBastions, createBastion } from '../actions/BastionActions';
+import { fetchBastions, createBastion } from '../../actions/BastionActions';
 
-jest.mock('../actions/BastionActions', () => {
+jest.mock('../../actions/BastionActions', () => {
   return {
     fetchBastions: jest.fn(() => ({ type: 'none' })),
     createBastion: jest.fn(() => ({ type: 'none' })),
